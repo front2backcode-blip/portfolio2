@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GreenLeaf Organics</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --green-dark:#1b5e20;
+  --green-main:#2e7d32;
+  --green-light:#a5d6a7;
+  --beige:#f7f2e7;
+  --orange:#ff9800;
+  --dark:#1b1b1b;
+  --light:#f1f8e9;
+}
+
+/* Reset */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{
+  background:var(--light);
+  color:#333;
+  line-height:1.6;
+  overflow-x:hidden; /* IMPORTANT */
+}
+
+/* Navbar */
+.nav-container{display:flex;justify-content:space-between;align-items:center;padding:20px 5%;background:var(--green-main);position:relative;z-index:1000;}
+.brand{font-size:32px;font-weight:700;color:#ffffff;text-decoration:none;display:flex;align-items:center;gap:8px;}
+.brand-highlight{color:var(--orange);}
+.nav-menu{display:flex;gap:25px;list-style:none;}
+.nav-menu li{color: white;}
+.nav-menu li a{text-decoration:none;font-weight:500;color:#ffffff;display:flex;align-items:center;gap:5px;transition:0.3s;}
+.nav-menu li a{
+  text-decoration:none;
+  font-weight:500;
+  color:#ffffff;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding-bottom:6px;
+  position:relative;
+}
+
+/* underline */
+.nav-menu li a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:3px;
+  background:var(--orange);
+  transition:0.3s ease;
+  border-radius:3px;
+}
+
+/* hover & active underline */
+.nav-menu li a:hover::after,
+.nav-menu li a.active::after{
+    color:var(--orange);
+  width:100%;
+}
+
+.nav-menu li a,.nav-menu li a:ho:hover {
+  color:var(--orange);
+}
+
+.nav-menu li a.cta-btn{background:var(--orange);color:#fff;padding:8px 20px;border-radius:8px;transition:0.3s;}
+.nav-menu li a.cta-btn:hover{background:#fff;color:var(--orange);}
+.menu-toggle{display:none;font-size:28px;color:#fff;cursor:pointer;}
+
+/* Hero */
+.hero{display:flex;align-items:center;justify-content:space-between;padding:40px 5%;gap:10px;background:var(--beige);}
+.hero-text h1{font-size:54px;font-weight:700;line-height:60px;color:var(--green-dark);}
+.hero-text p{margin:20px 0;font-size:20px;color:#555;}
+.hero-text .cta{display:inline-block;background:var(--orange);color:#fff;padding:12px 28px;border-radius:10px;text-decoration:none;font-weight:500;transition:0.3s;}
+.hero-text .cta:hover{background:var(--green-dark);}
+.hero img{width:450px;border-radius:20px;}
+
+/* Sections */
+.section{padding:70px 5%;}
+.section h2{text-align:center;font-size:36px;font-weight:600;margin-bottom:50px;color:var(--green-dark);}
+
+/* Grids */
+.grid3,.grid4,.process{display:grid;gap:30px;}
+.grid3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
+.grid4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}
+.process{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+
+/* Cards */
+.card,.product,.step,.t-card{background:#fff;border-radius:16px;padding:25px;text-align:center;box-shadow:0 6px 15px rgba(0,0,0,0.08);transition:0.3s;}
+.card:hover,.product:hover,.step:hover,.t-card:hover{transform:translateY(-5px);}
+.card img,.product img{width:100px;height:100px;object-fit:cover;margin-bottom:15px;border-radius:12px;}
+.product h4,.step h3,.t-card h4{color:var(--green-dark);margin-bottom:10px;}
+.card h3{color:var(--orange);}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:25px;margin-top:40px;text-align:center;}
+.stats h3{font-size:32px;color:var(--orange);}
+.stats p{font-weight:500;color:#333;}
+
+/* Farming Steps Icons */
+.step i{font-size:40px;color:var(--orange);margin-bottom:15px;}
+
+/* Testimonials */
+/*.testimonials{background:var(--beige);padding:60px 5%;border-radius:20px;}
+.testimonials .t-card p{color:#555;margin-bottom:12px;font-size:16px;}
+.testimonials .t-card h4{color:var(--green-dark);font-weight:600;font-size:18px;}*/
+
+/* Footer */
+footer{text-align:center;padding:30px;background:var(--green-dark);color:#fff;font-weight:500;margin-top:40px;border-top:5px solid var(--orange);}
+
+/* Responsive */
+@media(max-width:1073px){.brand{font-size:25px;}.nav-menu li a{font-size: 15px}}
+@media(max-width:970px){.brand{font-size:22px;}}
+@media(max-width:900px){
+  .hero{flex-direction:column;text-align:center;}
+  .hero img{width:90%;margin-top:20px;}
+  .nav-menu{flex-direction:column;background:var(--green-main);position:absolute;top:70px;right:0;width:100%;max-height:0;overflow:hidden;transition:max-height 0.4s ease-in-out;border-top:2px solid var(--orange);}
+  .nav-menu.show{max-height:500px;}
+  .nav-menu li{padding:15px 0;text-align:center;}
+  .menu-toggle{display:block;}
+}
+@media (max-width:400px){
+.brand{font-size:18px;}}
+
+@media(max-width:900px){
+    .nav-menu{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;}
+  .nav-menu li a{
+    width: 10rem;
+     justify-content:center;
+    padding:12px 0;
+    font-size:16px;
+  }
+  .nav-menu li a i{
+    font-size:18px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header>
+ <div class="nav-container">
+   <a href="#" class="brand">🌿 GreenLeaf <span class="brand-highlight">Organics</span></a>
+   <div class="menu-toggle" id="mobile-menu">
+     <i class="fas fa-bars"></i>
+   </div>
+   <ul class="nav-menu">
+     <li><a class="active" href="index.html"><i class="fas fa-home"></i> Home</a></li>
+     <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+     <li><a href="services.html"><i class="fas fa-cogs"></i> Services</a></li>
+     <li><a href="product.html"><i class="fas fa-carrot"></i> Products</a></li>
+     <li><a href="contact.html" class="cta-btn"><i class="fas fa-shopping-cart"></i> Visit Us</a></li>
+   </ul>
+ </div>
+</header>
+
+<script>
+// Mobile Toggle
+const menuToggle = document.getElementById('mobile-menu');
+const navMenu = document.querySelector('.nav-menu');
+menuToggle.addEventListener('click', () => {
+  navMenu.classList.toggle('show');
+});
+</script>
+
+<!-- HERO SECTION -->
+<section class="hero">
+ <div class="hero-text">
+  <h4>Pure from Nature. Powerful for Your Health.</h4>
+   <h1>Fresh. Healthy.<br> Organic.</h1>
+   <p>Premium organic fruits, vegetables, and grains grown naturally on sustainable farms. Eat healthy, live healthy.</p>
+   <a href="#" class="cta">Explore Products</a>
+ </div>
+ <img src="assets/img/veg.png" alt="Organic Food">
+</section>
+
+<!-- FEATURES -->
+<section class="section">
+ <h2>Why Choose GreenLeaf Organics</h2>
+ <div class="grid3">
+   <div class="card"><img src="assets/img/fruit.png"><h3>Fresh Fruits</h3><p>Hand-picked seasonal fruits directly from farms.</p></div>
+   <div class="card"><img src="assets/img/vegetable.png"><h3>Organic Veggies</h3><p>Grown without harmful chemicals or pesticides.</p></div>
+   <div class="card"><img src="assets/img/natural.jpg"><h3>Pure & Natural</h3><p>A healthy lifestyle starts with pure organic food.</p></div>
+ </div>
+</section>
+
+<!-- STATS -->
+<div style="width:100%;background:var(--beige);">
+<section class="section">
+ <h2>Our Organic Impact</h2>
+ <div class="stats">
+   <div><h3>200+</h3><p>Daily Customers</p></div>
+   <div><h3>5000+</h3><p>Organic Products Sold</p></div>
+   <div><h3>10+</h3><p>Years Farming Experience</p></div>
+   <div><h3>100%</h3><p>Customer Satisfaction</p></div>
+ </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section">
+ <h2>Our Popular Products</h2>
+ <div class="grid4">
+   <div class="product"><img src="assets/img/Mango.png"><h4>Mangoes</h4></div>
+   <div class="product"><img src="assets/img/beetroot.png"><h4>Beetroot</h4></div>
+   <div class="product"><img src="assets/img/grapes.png"><h4>Grapes</h4></div>
+   <div class="product"><img src="assets/img/brocli.png"><h4>Broccoli</h4></div>
+   <div class="product"><img src="assets/img/apple.png"><h4>Apples</h4></div>
+   <div class="product"><img src="assets/img/spanich.png"><h4>Spinach</h4></div>
+   <div class="product"><img src="assets/img/banana.png"><h4>Bananas</h4></div>
+   <div class="product"><img src="assets/img/tomato.png"><h4>Tomatoes</h4></div>
+   <div class="product"><img src="assets/img/peach.png"><h4>Peach</h4></div>
+   <div class="product"><img src="assets/img/avacado.png"><h4>Avocado</h4></div>
+ </div>
+</section>
+</div>
+
+<!-- FARMING PROCESS -->
+<section class="section">
+ <h2>Our Organic Growing Process</h2>
+ <div class="process">
+   <div class="step"><i class="fas fa-seedling"></i><h3>Seed Selection</h3><p>We pick the highest-quality natural seeds.</p></div>
+   <div class="step"><i class="fas fa-hand-holding-water"></i><h3>Natural Growth</h3><p>Grown using clean water & organic fertilizers.</p></div>
+   <div class="step"><i class="fas fa-tractor"></i><h3>Eco Harvesting</h3><p>Fresh harvest delivered the same day.</p></div>
+   <div class="step"><i class="fas fa-store"></i><h3>Delivered Fresh</h3><p>Delivered directly to your doorstep.</p></div>
+ </div>
+</section>
+
+<!-- TESTIMONIALS SLIDER -->
+<section class="section testimonials">
+  <h2>What Our Customers Say</h2>
+  <div class="slider-container">
+    <div class="slider-wrapper">
+      <div class="slide">
+        <p>"The best organic store! Everything is so fresh and tasty."</p>
+        <h4>- Ayesha</h4>
+      </div>
+      <div class="slide">
+        <p>"Super healthy veggies. I love their farm-to-home delivery."</p>
+        <h4>- Hamza</h4>
+      </div>
+      <div class="slide">
+        <p>"Affordable organic products with premium quality!"</p>
+        <h4>- Sara</h4>
+      </div>
+    </div>
+    <!-- Dots -->
+    <div class="dots">
+      <span class="dot active" data-slide="0"></span>
+      <span class="dot" data-slide="1"></span>
+      <span class="dot" data-slide="2"></span>
+    </div>
+  </div>
+</section>
+
+<style>
+.slider-container{
+  position:relative;
+  max-width:900px;
+  margin:0 auto;
+  background:var(--beige);
+  padding:50px 20px;
+  border-radius:20px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.08);
+  overflow:hidden; /* MAIN FIX */
+}
+
+.slider-wrapper{
+  display:flex;
+  width:100%;
+  transition:transform 0.6s ease-in-out;
+  will-change: transform;
+}
+
+.slide{
+  min-width:100%;
+  max-width:100%;
+  text-align:center;
+  padding:20px;
+  flex-shrink:0;
+}
+
+.slide p{font-size:18px;color:#555;margin-bottom:15px;}
+.slide h4{color:var(--green-dark);font-weight:600;font-size:20px;}
+.dots{text-align:center;margin-top:20px;}
+.dot{display:inline-block;width:12px;height:12px;margin:0 5px;background:#ccc;border-radius:50%;cursor:pointer;transition:0.3s;}
+.dot.active{background:var(--orange);}
+</style>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+let currentIndex = 0;
+const totalSlides = slides.length;
+
+function showSlide(index){
+  const wrapper = document.querySelector('.slider-wrapper');
+  wrapper.style.transform = `translateX(-${index * 100}%)`;
+  dots.forEach(dot => dot.classList.remove('active'));
+  dots[index].classList.add('active');
+}
+
+// Auto slide every 4 seconds
+let slideInterval = setInterval(() => {
+  currentIndex = (currentIndex + 1) % totalSlides;
+  showSlide(currentIndex);
+}, 4000);
+
+// Dots click event
+dots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    currentIndex = parseInt(dot.getAttribute('data-slide'));
+    showSlide(currentIndex);
+    clearInterval(slideInterval); // reset interval
+    slideInterval = setInterval(() => {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      showSlide(currentIndex);
+    }, 4000);
+  });
+});
+
+// Initialize
+showSlide(currentIndex);
+</script>
+
+
+<!-- FOOTER -->
+<footer>
+© 2025 GreenLeaf Organics | All Rights Reserved
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Us | GreenLeaf Organics</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --green-dark:#1b5e20;
+  --green-main:#2e7d32;
+  --green-light:#a5d6a7;
+  --beige:#f7f2e7;
+  --orange:#ff9800;
+  --dark:#1b1b1b;
+  --light:#f1f8e9;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:var(--light);
+  color:#333;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* Navbar */
+.nav-container{display:flex;justify-content:space-between;align-items:center;padding:20px 5%;background:var(--green-main);position:relative;z-index:1000;}
+.brand{font-size:32px;font-weight:700;color:#ffffff;text-decoration:none;display:flex;align-items:center;gap:8px;}
+.brand-highlight{color:var(--orange);}
+.nav-menu{display:flex;gap:25px;list-style:none;}
+.nav-menu li a{text-decoration:none;font-weight:500;color:#ffffff;display:flex;align-items:center;gap:5px;transition:0.3s;}
+.nav-menu li a i{color:#ffffff;}
+.nav-menu li a{
+  text-decoration:none;
+  font-weight:500;
+  color:#ffffff;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding-bottom:6px;
+  position:relative;
+}
+
+/* underline */
+.nav-menu li a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:3px;
+  background:var(--orange);
+  transition:0.3s ease;
+  border-radius:3px;
+}
+
+/* hover & active underline */
+.nav-menu li a:hover::after,
+.nav-menu li a.active::after{
+    color:var(--orange);
+  width:100%;
+}
+
+.nav-menu li a,.nav-menu li a:ho:hover {
+  color:var(--orange);
+}
+
+.nav-menu li a.cta-btn{background:var(--orange);color:#fff;padding:8px 20px;border-radius:8px;transition:0.3s;}
+.nav-menu li a.cta-btn:hover{background:#fff;color:var(--orange);}
+.menu-toggle{display:none;font-size:28px;color:#fff;cursor:pointer;}
+/* Responsive */
+@media(max-width:1073px){.brand{font-size:25px;}.nav-menu li a{font-size: 15px}}
+@media(max-width:970px){.brand{font-size:22px;}}
+@media(max-width:900px){
+  .nav-menu{flex-direction:column;gap: 0px; background:var(--green-main);position:absolute;top:70px;right:0;width:100%;
+   overflow: hidden; max-height:0;transition:max-height 0.4s ease-in-out;border-top:2px solid var(--orange);}
+  .nav-menu.show{max-height:500px;}
+  .nav-menu li{padding:10px 0;text-align:center;}
+  .menu-toggle{display:block;}
+}
+/* HERO */
+.about-hero{
+  padding:90px 5%;
+ background:url("assets/img/organic.jpg") center/cover no-repeat,rgba(0, 0, 0, 0.6);
+  background-blend-mode: multiply;
+  color:#fff;
+  text-align:center;
+}
+
+.about-hero h1{
+  font-size:52px;
+  margin-bottom:15px;
+  /*color:orange;*/
+}
+
+.about-hero p{
+  max-width:800px;
+  margin:auto;
+  font-size:18px;
+}
+
+/* SECTION */
+.section{
+  padding:50px 5%;
+}
+.Journey{
+   background:var(--beige);
+}
+/* ABOUT INTRO */
+.about-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:50px;
+  align-items:center;
+}
+
+.about-text h2{
+  font-size:38px;
+  color:var(--green-dark);
+  margin-bottom:20px;
+}
+
+.about-text h2 span{
+  color:var(--orange);
+}
+
+.about-text p{
+  margin-bottom:15px;
+  color:#555;
+}
+
+/* OVERLAP CARDS */
+.about-cards{
+  position:relative;
+  height:380px;
+}
+
+.about-card{
+  position:absolute;
+  background:#fff;
+   border: solid var(--orange) 2px;
+  padding:25px;
+  width:240px;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+.about-card i{
+  font-size:40px;
+  color:var(--orange);
+  margin-bottom:10px;
+}
+
+.about-card h4{
+  color:var(--green-dark);
+  margin-bottom:8px;
+}
+
+.card1{top:0;left:0;}
+.card2{top:90px;right:0;z-index:+1;}
+.card3{bottom:0;left:130px;z-index:-1;}
+
+/* MISSION */
+.mission{
+  background:var(--beige);
+  border-radius:30px;
+}
+
+.mission-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+  text-align:center;
+}
+
+.mission-box{
+  background:#fff;
+  padding:35px;
+   border: solid var(--orange) 2px;
+  border-radius:20px;
+}
+
+.mission-box i{
+  font-size:45px;
+  color:var(--orange);
+  margin-bottom:15px;
+}
+
+.mission-box h3{
+  color:var(--green-dark);
+  margin-bottom:10px;
+}
+
+/* TIMELINE */
+.timeline{
+  position:relative;
+  max-width:900px;
+  margin:auto;
+}
+
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:50%;
+  top:0;
+  width:4px;
+  height:100%;
+  background:var(--green-light);
+  transform:translateX(-50%);
+}
+
+.timeline-item{
+  width:50%;
+  padding:30px;
+}
+
+.timeline-item.left{text-align:right;}
+.timeline-item.right{margin-left:50%;}
+
+.timeline-box{
+  background:#fff;
+  padding:25px;
+   border: solid var(--orange) 2px;
+  border-radius:15px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* TEAM */
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:30px;
+  text-align:center;
+}
+
+.team-card{
+  border: solid var(--orange) 2px;
+  background:#fff;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.08);
+}
+
+.team-card img{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:15px;
+}
+
+/* FOOTER */
+footer{
+  background:var(--green-dark);
+  color:#fff;
+  text-align:center;
+  padding:30px;
+  margin-top:50px;
+}
+/* ================= RESPONSIVE FIXES ================= */
+
+@media (max-width:1100px){
+  .about-cards{
+    height:auto;
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .about-card{
+    position:relative;
+    width:100%;
+    max-width:280px;
+  }
+  .card1,.card2,.card3{
+    top:auto;
+    left:auto;
+    right:auto;
+    bottom:auto;
+    z-index:1;
+  }
+}
+
+@media (max-width:900px){
+  .about-hero h1{font-size:38px;}
+  .about-text h2{font-size:30px;}
+
+  .timeline::before{
+    left:10px;
+  }
+
+  .timeline-item{
+    width:100%;
+    padding-left:40px;
+    text-align:left !important;
+  }
+
+  .timeline-item.right{
+    margin-left:0;
+  }
+}
+
+@media (max-width:600px){
+.brand{font-size:25px;}
+  .section{padding:60px 6%;}
+  .about-hero{padding:70px 6%;}
+  .about-hero p{font-size:16px;}
+
+  .nav-menu li a{
+    justify-content:center;
+  }
+
+  .team-card img{
+    width:100px;
+    height:100px;
+  }
+}
+@media (max-width:400px){
+.brand{font-size:18px;}}
+
+@media(max-width:900px){
+    .nav-menu{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;}
+  .nav-menu li a{
+    width: 10rem;
+     justify-content:center;
+    padding:12px 0;
+    font-size:16px;
+  }
+  .nav-menu li a i{
+    font-size:18px;
+  }
+}
+
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header>
+ <div class="nav-container">
+   <a href="#" class="brand">🌿 GreenLeaf <span class="brand-highlight">Organics</span></a>
+   <div class="menu-toggle" id="mobile-menu">
+     <i class="fas fa-bars"></i>
+   </div>
+   <ul class="nav-menu">
+     <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+     <li><a class="active"href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+     <li><a href="services.html"><i class="fas fa-cogs"></i> Services</a></li>
+     <li><a href="product.html"><i class="fas fa-carrot"></i> Products</a></li>
+     <li><a href="contact.html" class="cta-btn"><i class="fas fa-shopping-cart"></i> Visit Us</a></li>
+   </ul>
+ </div>
+</header>
+
+<script>
+// Mobile Toggle
+const menuToggle = document.getElementById('mobile-menu');
+const navMenu = document.querySelector('.nav-menu');
+menuToggle.addEventListener('click', () => {
+  navMenu.classList.toggle('show');
+});
+</script>
+
+<!-- HERO -->
+<section class="about-hero">
+  <h1>About GreenLeaf Organics</h1>
+  <p>
+    We believe organic food is not a luxury — it is a necessity for a healthy
+    life and a sustainable future.
+  </p>
+</section>
+
+<!-- ABOUT INTRO -->
+<section class="section">
+  <div class="about-grid">
+
+    <div class="about-text">
+      <h2>Who We Are & <span>What We Believe</span></h2>
+      <p>
+        GreenLeaf Organics was founded with one clear mission — to reconnect
+        people with pure, natural food. Our journey started from small family
+        farms and grew into a trusted organic brand.
+      </p>
+      <p>
+        We work closely with farmers, ensuring that every product meets strict
+        organic standards. No chemicals, no shortcuts — just honest farming.
+      </p>
+      <p>
+        Our focus is not only on health but also on protecting the environment
+        and supporting local communities.
+      </p>
+    </div>
+
+    <div class="about-cards">
+      <div class="about-card card1">
+        <i class="fas fa-seedling"></i>
+        <h4>Pure Seeds</h4>
+        <p>Non-GMO & naturally selected.</p>
+      </div>
+
+      <div class="about-card card2">
+        <i class="fas fa-leaf"></i>
+        <h4>Organic Farming</h4>
+        <p>Eco-friendly growing methods.</p>
+      </div>
+
+      <div class="about-card card3">
+        <i class="fas fa-truck"></i>
+        <h4>Fresh Delivery</h4>
+        <p>Directly from farm to home.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="section mission">
+  <div class="mission-grid">
+    <div class="mission-box">
+      <i class="fas fa-heart"></i>
+      <h3>Our Mission</h3>
+      <p>To deliver healthy organic food while caring for nature.</p>
+    </div>
+    <div class="mission-box">
+      <i class="fas fa-eye"></i>
+      <h3>Our Vision</h3>
+      <p>A world where everyone eats clean and lives healthy.</p>
+    </div>
+    <div class="mission-box">
+      <i class="fas fa-globe"></i>
+      <h3>Our Values</h3>
+      <p>Sustainability, honesty, and quality.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="about-text">
+    <h2>Why <span>GreenLeaf Organics</span> Exists</h2>
+
+    <p>
+      Modern lifestyles have pushed people away from natural food.
+      At GreenLeaf Organics, we exist to bring people back to real,
+      chemical-free nutrition that supports long-term health.
+    </p>
+
+    <p>
+      Our products are grown using traditional farming wisdom combined
+      with modern organic practices. Every vegetable, fruit, and grain
+      is carefully monitored from soil preparation to final delivery.
+    </p>
+
+    <p>
+      We do not believe in shortcuts. No artificial growth boosters,
+      no harmful pesticides, and no compromises on quality.
+      What you eat should nourish your body, not harm it.
+    </p>
+
+    <p>
+      Today, GreenLeaf Organics proudly serves hundreds of families,
+      restaurants, and health-conscious customers who trust us
+      for freshness, transparency, and consistency.
+    </p>
+  </div>
+</section>
+
+
+<!-- JOURNEY -->
+<section class="section Journey">
+  <h2 style="text-align:center;color:var(--green-dark);margin-bottom:50px;">
+    Our Journey
+  </h2>
+
+  <div class="timeline">
+    <div class="timeline-item left">
+      <div class="timeline-box">
+        <h4>2015</h4>
+        <p>Started with small organic farms.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item right">
+      <div class="timeline-box">
+        <h4>2019</h4>
+        <p>Expanded to local organic markets.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item left">
+      <div class="timeline-box">
+        <h4>2023</h4>
+        <p>Launched farm-to-home delivery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<br><br>
+<section class="section">
+  <div class="about-grid">
+
+    <div class="about-text">
+      <h2>From <span>Farm to Family</span></h2>
+      <p>
+        Every product at GreenLeaf Organics goes through a careful journey.
+        We work directly with farmers who follow organic principles
+        passed down through generations.
+      </p>
+      <p>
+        Our soil is enriched naturally, crops are grown seasonally,
+        and harvesting is done at peak freshness to preserve nutrition.
+      </p>
+      <p>
+        This process allows us to deliver food that is not only healthy
+        but also full of natural taste.
+      </p>
+    </div>
+
+    <div>
+      <img src="assets/img/fatmtofamily.jpg"
+           style="width:60%;height: 25rem; border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,0.15);">
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section" style="background:var(--beige);border-radius:30px;">
+  <div class="mission-grid">
+    <div class="mission-box">
+      <h3>10+ Years</h3>
+      <p>Organic Farming Experience</p>
+    </div>
+    <div class="mission-box">
+      <h3>5000+</h3>
+      <p>Happy Customers Served</p>
+    </div>
+    <div class="mission-box">
+      <h3>100%</h3>
+      <p>Chemical-Free Products</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#fff;border-radius:30px;">
+  <h2 style="text-align:center;color:var(--green-dark);margin-bottom:50px;">
+    Why Customers Trust <span style="color:var(--orange)">GreenLeaf</span>
+  </h2>
+
+  <div style="width: 100%;display: flex;justify-content: center;gap: 2rem;">
+
+    <div style="width:80%;">
+      <img src="assets/img/green.jpg"
+           style="width:100%;height: 25rem; border-radius:20px;">
+    </div>
+
+    <div class="about-text" style="width:100%;margin-top: 5rem;">
+      <p><i class="fas fa-check-circle" style="color:var(--orange)"></i>
+        Transparent sourcing & honest farming practices
+      </p>
+      <p><i class="fas fa-check-circle" style="color:var(--orange)"></i>
+        Zero harmful chemicals or preservatives
+      </p>
+      <p><i class="fas fa-check-circle" style="color:var(--orange)"></i>
+        Tested quality standards before delivery
+      </p>
+      <p><i class="fas fa-check-circle" style="color:var(--orange)"></i>
+        Trusted by families, cafes & organic stores
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- TEAM -->
+<section class="section">
+  <h2 style="text-align:center;color:var(--green-dark);margin-bottom:50px;">
+    Meet Our Team
+  </h2>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <img src="assets/img/1images .jpg">
+      <h4>Ali Khan</h4>
+      <p>Founder</p>
+    </div>
+    <div class="team-card">
+      <img src="assets/img/2images.jpg">
+      <h4>Sara Ahmed</h4>
+      <p>Organic Expert</p>
+    </div>
+    <div class="team-card">
+      <img src="assets/img/IMG_4584.JPG">
+      <h4>Usman Tariq</h4>
+      <p>Farm Manager</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2025 GreenLeaf Organics | All Rights Reserved
+</footer>
+
+</body>
+</html>

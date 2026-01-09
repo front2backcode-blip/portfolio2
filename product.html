@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Products | GreenLeaf Organics</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --green-dark:#1b5e20;
+  --green-main:#2e7d32;
+  --green-light:#a5d6a7;
+  --orange:#ff9800;
+  --light:#f1f8e9;
+  --beige:#f7f2e7;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:var(--light);color:#333;line-height:1.7;overflow-x:hidden;}
+
+/* ================= NAVBAR ================= */
+.nav-container{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 5%;background:var(--green-main);
+}
+.brand{font-size:32px;font-weight:700;color:#fff;text-decoration:none;}
+.brand span{color:var(--orange);}
+.nav-menu{display:flex;gap:25px;list-style:none;}
+.nav-menu li a{
+  text-decoration:none;color:#fff;display:flex;align-items:center;gap:6px;
+  padding-bottom:6px;position:relative;font-weight:500;
+}
+.nav-menu li a::after{
+  content:'';position:absolute;left:0;bottom:0;width:0;height:3px;
+  background:var(--orange);transition:.3s;
+}
+.nav-menu li a:hover::after,
+.nav-menu li a.active::after{width:100%;}
+.nav-menu li a.cta-btn{
+  background:var(--orange);padding:8px 18px;border-radius:8px;
+}
+.nav-menu li a.cta-btn::after{display:none;}
+.menu-toggle{display:none;font-size:28px;color:#fff;cursor:pointer;}
+
+@media(max-width:900px){
+.nav-menu{flex-direction:column;background:var(--green-main);
+ position:absolute;top:70px;right:0;width:100%;
+ max-height:0;overflow:hidden;transition:.4s;border-top:2px solid var(--orange);}
+.nav-menu.show{max-height:500px;}
+.nav-menu li{text-align:center;padding:10px 0;}
+.menu-toggle{display:block;}
+}
+
+/* ================= HERO ================= */
+.products-hero{
+  padding:90px 5%;
+  background:url("assets/img/organic.jpg") center/cover no-repeat,rgba(0,0,0,.6);
+  background-blend-mode:multiply;color:#fff;text-align:center;
+}
+.products-hero h1{font-size:48px;}
+.products-hero p{max-width:850px;margin:auto;font-size:18px;}
+
+/* ================= SECTION ================= */
+/* ================= COMMON SECTIONS ================= */
+.section{
+  padding:70px 6%;
+}
+
+.section-title{
+  font-size:36px;
+  font-weight:700;
+  text-align:center;
+  color:var(--green-dark);
+  margin-bottom:15px;
+}
+
+.section-text{
+  max-width:900px;
+  margin:0 auto 30px;
+  text-align:center;
+  font-size:17px;
+  color:#555;
+  line-height:1.8;
+}
+
+/* ================= CATEGORY GRID ================= */
+.category-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:25px;
+  margin-top:40px;
+}
+
+.category-card{
+  background:#fff;
+  border:2px solid var(--orange);
+  border-radius:20px;
+  padding:30px 20px;
+  text-align:center;
+  transition:.3s ease;
+}
+
+.category-card i{
+  font-size:42px;
+  color:var(--orange);
+  margin-bottom:15px;
+}
+
+.category-card h4{
+  font-size:18px;
+  color:var(--green-dark);
+  margin-bottom:6px;
+}
+
+.category-card p{
+  font-size:14px;
+  color:#666;
+}
+
+.category-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 15px 30px rgba(0,0,0,.12);
+}
+
+/* ================= BENEFITS ================= */
+.light-bg{
+  background:var(--beige);
+  border-radius:35px;
+}
+
+.benefits-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:20px;
+  margin-top:35px;
+}
+
+.benefit-box{
+  background:#fff;
+  border-left:6px solid var(--orange);
+  padding:18px 20px;
+  border-radius:12px;
+  font-size:16px;
+  font-weight:500;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.benefit-box i{
+  color:var(--orange);
+  font-size:20px;
+}
+
+/* ================= QUALITY LIST ================= */
+.quality-list{
+  max-width:550px;
+  margin:25px auto 0;
+  list-style:none;
+}
+
+.quality-list li{
+  font-size:16px;
+  padding:8px 0;
+  color:#444;
+}
+
+/* ================= FAQ ================= */
+.faq{
+  background:#fff;
+}
+
+.faq-box{
+  max-width:900px;
+  margin:15px auto;
+  background:var(--light);
+  padding:22px 25px;
+  border-radius:16px;
+  border-left:5px solid var(--orange);
+}
+
+.faq-box h4{
+  color:var(--green-dark);
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.faq-box p{
+  font-size:15px;
+  color:#555;
+}
+
+/* ================= CTA ================= */
+.cta{
+  background:linear-gradient(135deg,var(--green-dark),var(--green-main));
+  color:#fff;
+  text-align:center;
+  border-radius:40px;
+}
+
+.cta h2{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+.cta p{
+  font-size:18px;
+  margin-bottom:20px;
+}
+
+.cta-btn{
+  display:inline-block;
+  background:var(--orange);
+  color:#fff;
+  padding:12px 30px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  transition:.3s;
+}
+
+.cta-btn:hover{
+  background:#e68900;
+}
+@media (max-width:400px){
+.brand{font-size:18px;}}
+
+@media(max-width:900px){
+    .nav-menu{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;}
+  .nav-menu li a{
+    width: 10rem;
+     justify-content:center;
+    padding:12px 0;
+    font-size:16px;
+  }
+  .nav-menu li a i{
+    font-size:18px;
+  }
+}
+@media(max-width:1073px){.brand{font-size:25px;}.nav-menu li a{font-size: 15px}}
+@media(max-width:970px){.brand{font-size:22px;}}
+@media(max-width:900px){
+  .nav-menu{flex-direction:column;gap: 0px; background:var(--green-main);position:absolute;top:70px;right:0;width:100%;
+   overflow: hidden; max-height:0;transition:max-height 0.4s ease-in-out;border-top:2px solid var(--orange);}
+  .nav-menu.show{max-height:500px;}
+  .nav-menu li{padding:10px 0;text-align:center;}
+  .menu-toggle{display:block;}
+}
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .section-title{font-size:30px;}
+  .cta h2{font-size:32px;}
+}
+
+@media(max-width:600px){
+  .section{padding:55px 7%;}
+  .section-title{font-size:26px;}
+  .section-text{font-size:15px;}
+  .cta h2{font-size:26px;}
+  .cta p{font-size:15px;}
+}
+
+
+/* ================= CATEGORIES ================= */
+.categories{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;margin-top:40px;
+}
+.category{
+  background:#fff;border-radius:20px;padding:25px;
+  text-align:center;border:2px solid var(--orange);
+  transition:.3s;
+}
+.category:hover{transform:translateY(-6px);}
+.category i{font-size:40px;color:var(--orange);margin-bottom:10px;}
+.category h4{color:var(--green-dark);}
+
+/* ================= PRODUCTS ================= */
+.products-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;margin-top:40px;
+}
+.product-card{
+  background:#fff;border-radius:22px;overflow:hidden;
+  border:2px solid var(--orange);transition:.3s;
+}
+.product-card:hover{transform:translateY(-6px);}
+.product-card img{width:100%;height:260px;object-fit:cover;}
+.product-info{padding:20px;}
+.product-info h3{color:var(--green-dark);}
+.product-info p{font-size:14px;color:#555;}
+.tag{
+  display:inline-block;background:var(--orange);color:#fff;
+  padding:4px 10px;border-radius:20px;font-size:12px;margin-bottom:8px;
+}
+
+/* ================= INFO ================= */
+.info-box{
+  background:var(--beige);border-radius:30px;padding:50px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;align-items:center;
+}
+.info-box h2{color:var(--green-dark);}
+.info-box ul{margin-top:10px;}
+.info-box li{margin-bottom:8px;}
+
+/* ================= FOOTER ================= */
+footer{
+  background:var(--green-dark);color:#fff;text-align:center;
+  padding:30px;margin-top:60px;
+}
+
+@media(max-width:600px){
+.products-hero h1{font-size:34px;}
+.section{padding:45px 6%;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header>
+<div class="nav-container">
+<a href="index.html" class="brand">🌿 GreenLeaf <span>Organics</span></a>
+<div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+<ul class="nav-menu">
+     <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+     <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+     <li><a href="services.html"><i class="fas fa-cogs"></i> Services</a></li>
+     <li><a class="active" href="product.html"><i class="fas fa-carrot"></i> Products</a></li>
+     <li><a href="contact.html" class="cta-btn"><i class="fas fa-shopping-cart"></i> Visit Us</a></li>
+   </ul>
+</div>
+</header>
+
+<script>
+document.getElementById('mobile-menu').onclick=()=>{
+document.querySelector('.nav-menu').classList.toggle('show');
+}
+</script>
+
+<!-- HERO -->
+<section class="products-hero">
+<h1>Organic & Healthy Products</h1>
+<p>
+Discover a wide variety of fresh, organic and chemical-free foods.
+Inspired by online marketplaces, curated with care for healthy living.
+</p>
+</section>
+
+<!-- CATEGORIES -->
+<section class="section">
+<h2 style="color:var(--green-dark);text-align:center;">Product Categories</h2>
+<div class="categories">
+
+<div class="category">
+<i class="fas fa-apple-alt"></i>
+<h4>Fresh Fruits</h4>
+</div>
+
+<div class="category">
+<i class="fas fa-carrot"></i>
+<h4>Organic Vegetables</h4>
+</div>
+
+<div class="category">
+<i class="fas fa-seedling"></i>
+<h4>Grains & Seeds</h4>
+</div>
+
+<div class="category">
+<i class="fas fa-mug-hot"></i>
+<h4>Herbal & Tea</h4>
+</div>
+
+<div class="category">
+<i class="fas fa-cheese"></i>
+<h4>Dairy & Farm</h4>
+</div>
+
+<div class="category">
+<i class="fas fa-leaf"></i>
+<h4>Superfoods</h4>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Pure, Organic & Healthy Products</h2>
+  <p class="section-text">
+    At GreenLeaf Organics, we carefully select organic fruits, vegetables,
+    grains, and natural food products directly from trusted farms.
+    Our products are grown without harmful chemicals, pesticides,
+    or artificial preservatives — ensuring purity, freshness,
+    and complete nutrition for your family.
+  </p>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Shop by Categories</h2>
+
+  <div class="category-grid">
+    <div class="category-card"><i class="fas fa-apple-alt"></i><h4>Fresh Fruits</h4><p>Seasonal & organic fruits</p></div>
+    <div class="category-card"><i class="fas fa-carrot"></i><h4>Vegetables</h4><p>Farm fresh daily vegetables</p></div>
+    <div class="category-card"><i class="fas fa-seedling"></i><h4>Grains & Seeds</h4><p>Natural whole grains</p></div>
+    <div class="category-card"><i class="fas fa-leaf"></i><h4>Superfoods</h4><p>Nutrition-rich foods</p></div>
+    <div class="category-card"><i class="fas fa-mug-hot"></i><h4>Herbal Products</h4><p>Natural immunity boosters</p></div>
+    <!-- <div class="category-card"><i class="fas fa-cheese"></i><h4>Dairy & Natural Foods</h4><p>Pure & preservative-free</p></div> -->
+  </div>
+</section>
+
+
+<!-- PRODUCTS -->
+<section class="section">
+<h2 style="color:var(--green-dark);text-align:center;">Featured Organic Products</h2>
+
+<div class="products-grid">
+
+<!-- FRUITS -->
+<div class="product-card"><img src="assets/img/redapple.jpeg"><div class="product-info"><span class="tag">Organic</span><h3>Red Apples</h3><p>Fresh orchard apples rich in fiber.</p></div></div>
+<div class="product-card"><img src="assets/img/banan.jpg"><div class="product-info"><span class="tag">Organic</span><h3>Bananas</h3><p>Naturally ripened energy booster.</p></div></div>
+<div class="product-card"><img src="assets/img/ornge.jpg"><div class="product-info"><span class="tag">Fresh</span><h3>Oranges</h3><p>Vitamin C rich citrus fruit.</p></div></div>
+<div class="product-card"><img src="assets/img/mngo.jpg"><div class="product-info"><span class="tag">Seasonal</span><h3>Mangoes</h3><p>Sweet & juicy farm mangoes.</p></div></div>
+<div class="product-card"><img src="assets/img/strwbwrries.jpg"><div class="product-info"><span class="tag">Organic</span><h3>Strawberries</h3><p>Antioxidant rich berries.</p></div></div>
+<div class="product-card"><img src="assets/img/Grapes.jpg"><div class="product-info"><span class="tag">Fresh</span><h3>Grapes</h3><p>Naturally grown seedless grapes.</p></div></div>
+<div class="product-card"><img src="assets/img/Pomegranate.jpg"><div class="product-info"><span class="tag">Organic</span><h3>Pomegranate</h3><p>Iron & immunity booster fruit.</p></div></div>
+<div class="product-card"><img src="assets/img/Papaya.jpg"><div class="product-info"><span class="tag">Healthy</span><h3>Papaya</h3><p>Digestive-friendly tropical fruit.</p></div></div>
+<div class="product-card"><img src="assets/img/Pineapple.jpg"><div class="product-info"><span class="tag">Fresh</span><h3>Pineapple</h3><p>Naturally sweet & juicy.</p></div></div>
+<div class="product-card"><img src="assets/img/Guava.jpg"><div class="product-info"><span class="tag">Organic</span><h3>Guava</h3><p>Vitamin rich local fruit.</p></div></div>
+
+<!-- VEGETABLES -->
+<div class="product-card"><img src="assets/img/Tomatoes.jpg"><div class="product-info"><span class="tag">Farm Fresh</span><h3>Tomatoes</h3><p>Chemical-free fresh tomatoes.</p></div></div>
+<div class="product-card"><img src="assets/img/potato.jpg"><div class="product-info"><span class="tag">Organic</span><h3>Potatoes</h3><p>Naturally grown root vegetable.</p></div></div>
+<div class="product-card"><img src="assets/img/Onions.jpg"><div class="product-info"><span class="tag">Fresh</span><h3>Onions</h3><p>Essential daily kitchen vegetable.</p></div></div>
+<div class="product-card"><img src="assets/img/carrots.jpg"><div class="product-info"><span class="tag">Healthy</span><h3>Carrots</h3><p>Rich in beta-carotene.</p></div></div>
+<div class="product-card"><img src="assets/img/Spinach.jpg"><div class="product-info"><span class="tag">Organic</span><h3>Spinach</h3><p>Iron-rich leafy green.</p></div></div>
+<div class="product-card"><img src="assets/img/Cucumber.jpg"><div class="product-info"><span class="tag">Fresh</span><h3>Cucumber</h3><p>Hydrating & refreshing.</p></div></div>
+<div class="product-card"><img src="assets/img/Broccoli.jpg"><div class="product-info"><span class="tag">Organic</span><h3>Broccoli</h3><p>High-fiber green vegetable.</p></div></div>
+<div class="product-card"><img src="assets/img/Capsicum.jpg"><div class="product-info"><span class="tag">Healthy</span><h3>Capsicum</h3><p>Colorful vitamin-rich peppers.</p></div></div>
+<div class="product-card"><img src="assets/img/Cauliflower.jpg"><div class="product-info"><span class="tag">Fresh</span><h3>Cauliflower</h3><p>Farm harvested vegetable.</p></div></div>
+<div class="product-card"><img src="assets/img/Eggplant.jpg"><div class="product-info"><span class="tag">Organic</span><h3>Eggplant</h3><p>Nutrient dense brinjal.</p></div></div>
+
+<!-- GRAINS & SEEDS -->
+<div class="product-card"><img src="assets/img/Brown Rice.jpg"><div class="product-info"><span class="tag">Organic</span><h3>Brown Rice</h3><p>High fiber whole grain.</p></div></div>
+<div class="product-card"><img src="assets/img/Wheat Grain.jpg"><div class="product-info"><span class="tag">Healthy</span><h3>Wheat Grain</h3><p>Stone-ground natural wheat.</p></div></div>
+<div class="product-card"><img src="assets/img/Oats.jpg"><div class="product-info"><span class="tag">Organic</span><h3>Oats</h3><p>Heart-healthy breakfast grain.</p></div></div>
+<div class="product-card"><img src="assets/img/Quinoa.jpg"><div class="product-info"><span class="tag">Natural</span><h3>Quinoa</h3><p>Protein rich super grain.</p></div></div>
+<div class="product-card"><img src="assets/img/Chia Seeds.jpg"><div class="product-info"><span class="tag">Organic</span><h3>Chia Seeds</h3><p>Omega-3 powerhouse.</p></div></div>
+<div class="product-card"><img src="assets/img/Flax Seeds.jpg"><div class="product-info"><span class="tag">Healthy</span><h3>Flax Seeds</h3><p>Fiber & heart support.</p></div></div>
+<div class="product-card"><img src="assets/img/Lentils.jpg"><div class="product-info"><span class="tag">Organic</span><h3>Lentils</h3><p>Protein-rich pulses.</p></div></div>
+<div class="product-card"><img src="assets/img/chooly.jpg"><div class="product-info"><span class="tag">Natural</span><h3>Chickpeas</h3><p>Daily nutrition essential.</p></div></div>
+<div class="product-card"><img src="assets/img/Millets.jpg"><div class="product-info"><span class="tag">Healthy</span><h3>Millets</h3><p>Ancient healthy grains.</p></div></div>
+<div class="product-card"><img src="assets/img/Sesame Seeds.jpg"><div class="product-info"><span class="tag">Organic</span><h3>Sesame Seeds</h3><p>Calcium rich seeds.</p></div></div>
+
+<!-- DAIRY / HERBAL / SUPERFOODS (31–100 condensed) -->
+<!-- You can duplicate pattern with new names -->
+
+</div>
+</section>
+
+
+<!-- INFO -->
+<section class="section">
+<div class="info-box">
+<div>
+<h2>Why Our Products Are Different</h2>
+<p>
+Our products are not mass-produced.
+Each item is sourced responsibly, ensuring health, freshness,
+and environmental care.
+</p>
+</div>
+<div>
+<ul>
+<li>✔ No artificial preservatives</li>
+<li>✔ Eco-friendly farming</li>
+<li>✔ Nutrient-rich foods</li>
+<li>✔ Farmer-direct sourcing</li>
+<li>✔ Transparency & trust</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="section cta">
+  <h2>Eat Clean. Live Healthy.</h2>
+  <p>
+    Discover the power of organic food and make a healthy lifestyle choice today.
+  </p>
+  <a href="contact.html" class="cta-btn">Contact Us</a>
+</section>
+
+
+<section class="section faq">
+  <h2 class="section-title">Frequently Asked Questions</h2>
+
+  <div class="faq-box">
+    <h4>Are all products 100% organic?</h4>
+    <p>Yes, all products are sourced from organic farms using natural methods.</p>
+  </div>
+
+  <div class="faq-box">
+    <h4>Do you use preservatives?</h4>
+    <p>No artificial preservatives or chemicals are used in our products.</p>
+  </div>
+
+  <div class="faq-box">
+    <h4>Are products suitable for children?</h4>
+    <p>Absolutely. Our products are safe and healthy for all age groups.</p>
+  </div>
+
+  <div class="faq-box">
+    <h4>Is this an online store?</h4>
+    <p>This is a product showcase platform highlighting organic food quality.</p>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+© 2025 GreenLeaf Organics | Healthy Food, Healthy Life
+</footer>
+
+</body>
+</html>

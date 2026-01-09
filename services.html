@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Services | GreenLeaf Organics</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --green-dark:#1b5e20;
+  --green-main:#2e7d32;
+  --green-light:#a5d6a7;
+  --beige:#f7f2e7;
+  --orange:#ff9800;
+  --light:#f1f8e9;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:var(--light);color:#333;line-height:1.7;overflow-x:hidden;}
+
+/* NAVBAR */
+.nav-container{display:flex;justify-content:space-between;align-items:center;padding:20px 5%;background:var(--green-main);}
+.brand{font-size:32px;font-weight:700;color:#fff;text-decoration:none;}
+.brand-highlight{color:var(--orange);}
+.nav-menu{display:flex;gap:25px;list-style:none;}
+.nav-menu li a{color:#fff;text-decoration:none;display:flex;gap:6px;align-items:center;position:relative;padding-bottom:6px;}
+.nav-menu li a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:3px;background:var(--orange);transition:.3s;}
+.nav-menu li a:hover::after,.nav-menu li a.active::after{width:100%;}
+.nav-menu li a.cta-btn{background:var(--orange);padding:8px 18px;border-radius:8px;}
+.nav-menu li a.cta-btn::after{display:none;}
+.menu-toggle{display:none;font-size:26px;color:#fff;cursor:pointer;}
+
+@media(max-width:1073px){.brand{font-size:25px;}.nav-menu li a{font-size: 15px}}
+@media(max-width:970px){.brand{font-size:22px;}}
+@media(max-width:900px){
+  .nav-menu{flex-direction:column;gap: 0px; background:var(--green-main);position:absolute;top:70px;right:0;width:100%;
+   overflow: hidden; max-height:0;transition:max-height 0.4s ease-in-out;border-top:2px solid var(--orange);}
+  .nav-menu.show{max-height:500px;}
+  .nav-menu li{padding:10px 0;text-align:center;}
+  .menu-toggle{display:block;}
+}
+@media (max-width:550px){
+.brand{font-size:18px;}}
+
+@media(max-width:900px){
+    .nav-menu{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;}
+  .nav-menu li a{
+    width: 10rem;
+     justify-content:center;
+    padding:12px 0;
+    font-size:16px;
+  }
+  .nav-menu li a i{
+    font-size:18px;
+  }
+}
+
+
+/* HERO */
+.services-hero{
+padding:90px 5%;
+background:url("assets/img/organic.jpg") center/cover no-repeat,rgba(0,0,0,.6);
+background-blend-mode:multiply;
+color:#fff;text-align:center;
+}
+.services-hero h1{font-size:50px;}
+.services-hero p{max-width:800px;margin:auto;font-size:18px;}
+
+/* SECTIONS */
+.section{padding:60px 5%;}
+
+/* SERVICES GRID */
+.services-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+.service-card{
+background:#fff;
+border:2px solid var(--orange);
+border-radius:22px;
+padding:35px 25px;
+text-align:center;
+transition:.3s;
+}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 15px 30px rgba(0,0,0,.15);}
+.service-card i{font-size:46px;color:var(--orange);margin-bottom:15px;}
+.service-card h3{color:var(--green-dark);margin-bottom:10px;}
+.service-card p{font-size:15px;color:#555;}
+
+/* IMAGE + TEXT */
+.service-image-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+align-items:center;
+}
+.service-image-grid img{width:100%;border-radius:25px;}
+
+/* STATS */
+.stats{
+background:var(--beige);
+border-radius:30px;
+}
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:30px;
+text-align:center;
+}
+.stat-box{
+background:#fff;
+border:2px solid var(--orange);
+border-radius:20px;
+padding:30px;
+}
+.stat-box h2{color:var(--orange);font-size:40px;}
+.stat-box p{font-weight:600;}
+
+/* PROCESS */
+.process-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+text-align:center;
+}
+.process-box{
+background:#fff;
+border:2px solid var(--orange);
+border-radius:20px;
+padding:30px;
+}
+.process-box span{
+background:var(--orange);
+color:#fff;
+width:45px;height:45px;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+margin-bottom:10px;
+}
+
+/* FAQ */
+.faq-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+.faq{
+background:#fff;
+border-left:5px solid var(--orange);
+padding:25px;
+border-radius:12px;
+}
+.faq h4{color:var(--green-dark);margin-bottom:8px;}
+
+/* CTA */
+.cta{
+background:#A0E695;
+text-align:center;
+padding:70px 5%;
+color: white;
+/*border-radius:35px;*/
+}
+.cta p{color: white;text-shadow: 1px 0 1px black;}
+.cta h2{color:var(--orange);}
+.cta a{
+display:inline-block;
+margin-top:20px;
+background:var(--orange);
+color:white;
+text-shadow: 1px 0 1px black;
+padding:12px 30px;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
+}
+
+/* FOOTER */
+footer{background:var(--green-dark);color:#fff;text-align:center;padding:30px;margin-top:50px;}
+
+@media(max-width:600px){
+.services-hero h1{font-size:36px;}
+.section{padding:50px 6%;}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav-container">
+<a href="index.html" class="brand">🌿 GreenLeaf <span class="brand-highlight">Organics</span></a>
+<div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+<ul class="nav-menu">
+<li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+<li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+<li><a href="services.html" class="active"><i class="fas fa-cogs"></i> Services</a></li>
+<li><a href="product.html"><i class="fas fa-carrot"></i> Products</a></li>
+<li><a href="contact.html" class="cta-btn"><i class="fas fa-shopping-cart"></i> Visit Us</a></li>
+</ul>
+</div>
+</header>
+
+<script>
+document.getElementById('mobile-menu').onclick=()=>document.querySelector('.nav-menu').classList.toggle('show');
+</script>
+
+<section class="services-hero">
+<h1>Our Organic Services</h1>
+<p>Healthy farming, transparent sourcing & fresh delivery for a better lifestyle.</p>
+</section>
+
+<section class="section">
+<div class="services-grid">
+<div class="service-card"><i class="fas fa-seedling"></i><h3>Organic Farming</h3><p>Pure soil, non-GMO seeds & eco-friendly methods.</p></div>
+<div class="service-card"><i class="fas fa-tractor"></i><h3>Farm Consultancy</h3><p>Helping farmers shift to organic systems.</p></div>
+<div class="service-card"><i class="fas fa-truck"></i><h3>Farm-to-Home</h3><p>Fresh produce delivered safely & quickly.</p></div>
+<div class="service-card"><i class="fas fa-leaf"></i><h3>Quality Control</h3><p>Strict checks & organic certification.</p></div>
+<div class="service-card"><i class="fas fa-store"></i><h3>Organic Markets</h3><p>Local markets for healthy communities.</p></div>
+<div class="service-card"><i class="fas fa-recycle"></i><h3>Sustainability</h3><p>Eco-friendly packaging & waste reduction.</p></div>
+</div>
+</section>
+
+<section style="background: white;" class="section">
+<div class="service-image-grid">
+<img src="assets/img/services.jpg">
+<div>
+<h2 style="color:var(--green-dark)">Why <span style="color:var(--orange)">Choose Us</span></h2>
+<p>We combine tradition with innovation to deliver clean, safe & nutritious food.</p>
+<p>Trusted by families, restaurants & health-conscious buyers.</p>
+</div>
+</div>
+</section>
+
+<section class="section stats">
+<div class="stats-grid">
+<div class="stat-box"><h2>10+</h2><p>Years Experience</p></div>
+<div class="stat-box"><h2>5K+</h2><p>Happy Customers</p></div>
+<div class="stat-box"><h2>100%</h2><p>Organic Products</p></div>
+<div class="stat-box"><h2>24/7</h2><p>Customer Support</p></div>
+</div>
+</section>
+
+<section class="cta">
+<h2>Ready to Go Organic?</h2>
+<p>Start your healthy journey with GreenLeaf Organics today.</p>
+<a href="#">Visit Us</a>
+</section>
+
+<section class="section">
+<h2 style="text-align:center;color:var(--green-dark);margin-bottom:30px;">FAQs</h2>
+<div class="faq-grid">
+<div class="faq"><h4>Are your products certified?</h4><p>Yes, all products meet organic standards.</p></div>
+<div class="faq"><h4>Do you deliver daily?</h4><p>Yes, fresh delivery schedules are available.</p></div>
+<div class="faq"><h4>Is packaging eco-friendly?</h4><p>We use recyclable & minimal packaging.</p></div>
+</div>
+</section>
+
+<footer>© 2025 GreenLeaf Organics | All Rights Reserved</footer>
+
+</body>
+</html>
